@@ -9,15 +9,7 @@
 a {
     text-decoration: none;
 }
-/* .header{
-    position: fixed;
-    height: 80px;
-    width: 100%;
-    z-index: 100;
-    padding: 0 20px;
-} */
 .nav{
-    max-width: 1100px;
     width: 100%;
     margin: 0 auto;
     display: flex;
@@ -209,7 +201,7 @@ a {
 
 }
 .navbar{
-    background-color: #896faa;
+    background-color: #b6a4cd;
     display: flex;
     height: 60px;
     align-items: center;
@@ -222,6 +214,7 @@ a {
     margin-left: 90px;
     color: #0b0217;
     font-size: 40px;
+    font-family: 'Times New Roman';
 }
 .bars{
     width: 300px;

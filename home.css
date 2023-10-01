@@ -6,14 +6,15 @@
     display:flex;
     align-items: center;
     justify-content: space-between;
-    height: 70px;
+    height: 60px;
     background-color: rgb(199, 204, 204);
 }
 .nav_logo {
-    margin-left: 50px;
-    font-size: 30px;
+    margin-left: 90px;
+    font-size: 40px;
+    font-family: 'Times New Roman';
     text-decoration: none;
-    padding: 5px;
+    color: #0b0217;
 }
 .data {
     width: 400px;
@@ -29,7 +30,7 @@
     width: 200px;
 }
 .nav_link{
-   color: rgb(0, 0, 0);
+    color: rgb(0, 0, 0);
     text-decoration: none;
     font-size: 25px;
 }
