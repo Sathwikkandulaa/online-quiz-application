@@ -10,10 +10,12 @@
     background-color: #a36aad;
   }
   .nav_logo {
-    margin-left: 50px;
-    font-size: 30px;
+    margin-left: 90px;
+    color: #0b0217;
+    font-size: 40px;
+    font-style: oblique;
+    font-family: 'Times New Roman';;
     text-decoration: none;
-    padding: 5px;
   }
   .data {
     width: 400px;
@@ -29,7 +31,7 @@
     width: 200px;
   }
   .nav_link{
-   color: rgb(0, 0, 0);
+    color: rgb(0, 0, 0);
     text-decoration: none;
     font-size: 25px;
   }
@@ -42,7 +44,6 @@
     background-size: cover;
     background-repeat: fixed;
     background-position: fixed;
-  
     height: 100vh;
   }
   
@@ -50,7 +51,7 @@
     background-color: #fff;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-    max-width: 400px;
+    width: 400px;
     margin: 20px auto;
     padding: 20px;
     text-align: center;
@@ -94,7 +95,7 @@
     background-color: #fff;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-    max-width: 400px;
+    width: 400px;
     margin: 20px auto;
     padding: 20px;
     text-align: center;
@@ -105,6 +106,26 @@
     color: #333;
   }
   .prev-button {
-    background-color: ##007bff;
+    background-color: #007bff;
     margin-right: 10px; 
+  }
+  .disable{
+    display: none;
+  }
+  .exit{
+    color: #fff;
+    text-decoration: none;
+    background-color: #007bff;
+    border-radius: 10px;
+    padding: 10px;
+    border: 1px solid rgb(0, 70, 131);
+  }
+  .exiting{
+    margin-top: 70px;
+  }
+  .main{
+    height: 700px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }

@@ -60,6 +60,7 @@ const nextButton = document.getElementById("next-button");
 const prevButton = document.querySelector(".prev-button") 
 const resultContainer = document.querySelector(".result-container");
 const scoreDisplay = document.getElementById("score");
+const container=document.querySelector(".quiz-container");
 
 function loadQuestion() {
     answerInputs.forEach((input) => {
@@ -80,6 +81,7 @@ function loadQuestion() {
 }
 
 function showResults() {
+    container.classList.add("disable");
     questionText.textContent = "Quiz Completed!";
     resultContainer.style.display = "block";
     scoreDisplay.textContent = `Score: ${score} / ${questions.length}`;

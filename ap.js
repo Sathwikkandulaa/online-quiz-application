@@ -57,9 +57,10 @@ let score = 0;
 const questionText = document.getElementById("question-text");
 const answerInputs = document.querySelectorAll("input[type='radio']");
 const nextButton = document.getElementById("next-button");
-const prevButton = document.querySelector(".prev-button") // Add a Previous button
+const prevButton = document.querySelector(".prev-button") 
 const resultContainer = document.querySelector(".result-container");
 const scoreDisplay = document.getElementById("score");
+const container=document.querySelector(".quiz-container");
 
 function loadQuestion() {
     answerInputs.forEach((input) => {
@@ -73,8 +74,6 @@ function loadQuestion() {
             const answer = currentQuestion.answers[answerInputs[i].value];
             answerInputs[i].nextSibling.textContent = answer;
         }
-
-        // Disable the Previous button on the first question
         prevButton.disabled = currentQuestionIndex === 0;
     } else {
         showResults();
@@ -82,6 +81,7 @@ function loadQuestion() {
 }
 
 function showResults() {
+    container.classList.add("disable");
     questionText.textContent = "Quiz Completed!";
     resultContainer.style.display = "block";
     scoreDisplay.textContent = `Score: ${score} / ${questions.length}`;

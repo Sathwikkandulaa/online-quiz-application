@@ -30,7 +30,7 @@ a {
 }
 .nav_logo {
     font-size: 25px;
-    font-style:oblique;
+    font-style: oblique;
 }
 .nav_item {
     column-gap: 15px;
@@ -233,6 +233,9 @@ footer {
     display: flex;
     justify-content: space-evenly;
  
+}
+.title {
+    font-style: oblique;
 }
 .footer-first {
     font-family: Arial, Helvetica, sans-serif;
