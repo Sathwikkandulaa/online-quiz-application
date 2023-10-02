@@ -13,7 +13,6 @@
     margin-left: 90px;
     color: #0b0217;
     font-size: 40px;
-    font-style: oblique;
     font-family: 'Times New Roman';;
     text-decoration: none;
   }
@@ -23,12 +22,6 @@
     align-items: center;
     justify-content: space-between;
     padding-right: 5px;
-  }
-  .btn{
-    color: rgb(0, 0, 0);
-    margin-right: 100px;
-    font-size: 25px;
-    width: 200px;
   }
   .nav_link{
     color: rgb(0, 0, 0);
