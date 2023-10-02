@@ -30,7 +30,7 @@
             </div>
             <button class="prev-button" >Previous</button> 
         
-            <button id="next-button">Next</button>
+            <button id="next-button"onclick="audio.play();">Next</button>
         </div>
         <div class="result-container">
             <h2>Your Results</h2>
@@ -38,6 +38,10 @@
             <div class="exiting"><a class="exit" href="home.html">EXIT</a></div>
         </div>
     </div>
+    <script type="text/javascript">
+        const audio = new Audio();
+        audio.src = "mouse-click.mp3";
+    </script>
 
     <script src="h.js"></script>
 </body>

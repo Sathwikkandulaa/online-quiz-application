@@ -1,7 +1,7 @@
 const logout=()=>{
 
     const link=document.createElement("a");
-    link.href="/index.html";
+    link.href="index.html";
     link.innerText="LogOut";
     link.style.padding="3px";
     link.style.borderRadius="5px";
