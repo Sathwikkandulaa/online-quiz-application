@@ -12,42 +12,42 @@ const questions = [
     {
         question: "Which famous ancient structure in Egypt is known for its association with the pharaohs and served as a tomb for them?",
         answers: {
-            A: " Great Wall of China ",
+            A: " Pyramids of Giza  ",
             B: " Taj Mahal ",
             C: " Parthenon ",
-            D: " Pyramids of Giza "
+            D: " Great Wall of China "
         },
-        correctAnswer: "D"
+        correctAnswer: "A"
     },
     {
         question: "Which ancient civilization is known for its contributions to mathematics, including the concept of zero and the decimal system?",
         answers: {
-            A: " Roman Empire ",
+            A: " Indus Valley Civilization",
             B: " Egyptian Civilization ",
-            C: " Indus Valley Civilization ",
+            C: " Roman Civilzation ",
             D: " Anicent Greece "
         },
-        correctAnswer: "C"
+        correctAnswer: "A"
     },
     {
         question: "Who is often credited with discovering America in 1492 while searching for a western route to Asia?",
         answers: {
-            A: " Vasco da Gama ",
-            B: " Christopher Columbus ",
+            A: " Christopher Columbus ",
+            B: " Vasco da Gama ",
             C: " Ferdinand Magellan ",
             D: " Marco Polo"
         },
-        correctAnswer: "B"
+        correctAnswer: "A"
     },
     {
         question: "In which year did Mahatma Gandhi lead the famous Dandi March as part of the civil disobedience movement against British colonial rule?",
         answers: {
-            A: " 1919",
+            A: " 1930",
             B: " 1942 ",
-            C: " 1930 ",
+            C: " 1919 ",
             D: " 1922"
         },
-        correctAnswer: "C"
+        correctAnswer: "A"
     }
 ];
 
@@ -104,6 +104,33 @@ function goBack() {
     currentQuestionIndex--;
     loadQuestion();
 }
+let play=document.getElementById("answerA");
+let play1=document.getElementById("answerB");
+let play2=document.getElementById("answerC");
+let play3=document.getElementById("answerD");
+
+function playButton()
+        {
+            let audio1=new Audio("correct.mp3");
+            audio1.play();
+        }
+        function playButton1(){
+            let audio2=new Audio("error.mp3");
+            audio2.play();
+        }
+        function playButton2(){
+            let audio3=new Audio("error.mp3");
+            audio3.play();
+        }
+        function playButton3(){
+            let audio4=new Audio("error.mp3");
+            audio4.play();
+        }
+
+        play.addEventListener("click",playButton)
+        play1.addEventListener("click",playButton1)
+        play2.addEventListener("click",playButton2)
+        play3.addEventListener("click",playButton3)
 
 nextButton.addEventListener("click", checkAnswer);
 prevButton.addEventListener("click", goBack); 

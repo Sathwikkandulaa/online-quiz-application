@@ -2,52 +2,52 @@ const questions = [
     {
         question: "What is the capital of France?",
         answers: {
-            A: "Berlin",
-            B: "Madrid",
-            C: "Rome",
-            D: "Paris"
+            A: " Berlin ",
+            B: " Paris ",
+            C: " Rome ",
+            D: " Madrid "
         },
-        correctAnswer: "D"
+        correctAnswer: "B"
     },
     {
         question: "Which river is the longest in the world?",
         answers: {
-            A: "Amazon",
-            B: "Nile",
-            C: "Mississippi",
-            D: "Yangtze"
+            A: " Amazon ",
+            B: " Nile ",
+            C: " Mississippi ",
+            D: " Yangtze "
         },
         correctAnswer: "B"
     },
     {
         question: "What is the largest desert in the world?",
         answers: {
-            A: "Gobi Desert",
-            B: "Sahara Desert",
-            C: "Arabian Desert",
-            D: "Mojave Desert"
+            A: " Gobi Desert ",
+            B: " Sahara Desert ",
+            C: " Arabian Desert ",
+            D: " Mojave Desert "
         },
         correctAnswer: "B"
     },
     {
         question: "Which country is known as the Land of the Rising Sun?",
         answers: {
-            A: "China",
-            B: "South Korea",
-            C: "Japan",
-            D: "Vietnam"
+            A: " China ",
+            B: " Japan ",
+            C: " South Korea",
+            D: " Vietnam "
         },
-        correctAnswer: "C"
+        correctAnswer: "B"
     },
     {
         question: "In which continent is the Amazon Rainforest located?",
         answers: {
-            A: "Asia",
-            B: "Africa",
-            C: "South America",
-            D: "Australia"
+            A: " Asia ",
+            B: " South America ",
+            C: " Africa",
+            D: " Australia "
         },
-        correctAnswer: "C"
+        correctAnswer: "B"
     }
 ];
 
@@ -105,6 +105,33 @@ function goBack() {
     currentQuestionIndex--;
     loadQuestion();
 }
+let play=document.getElementById("answerA");
+let play1=document.getElementById("answerB");
+let play2=document.getElementById("answerC");
+let play3=document.getElementById("answerD");
+
+function playButton()
+        {
+            let audio1=new Audio("error.mp3");
+            audio1.play();
+        }
+        function playButton1(){
+            let audio2=new Audio("correct.mp3");
+            audio2.play();
+        }
+        function playButton2(){
+            let audio3=new Audio("error.mp3");
+            audio3.play();
+        }
+        function playButton3(){
+            let audio4=new Audio("error.mp3");
+            audio4.play();
+        }
+
+        play.addEventListener("click",playButton)
+        play1.addEventListener("click",playButton1)
+        play2.addEventListener("click",playButton2)
+        play3.addEventListener("click",playButton3)
 
 nextButton.addEventListener("click", checkAnswer);
 prevButton.addEventListener("click", goBack);
