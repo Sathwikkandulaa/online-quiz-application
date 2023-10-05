@@ -23,31 +23,31 @@ const questions = [
         question: "What is the largest desert in the world?",
         answers: {
             A: " Gobi Desert ",
-            B: " Sahara Desert ",
-            C: " Arabian Desert ",
+            B: " Arabian Desert ",
+            C: " Sahara Desert ",
             D: " Mojave Desert "
         },
-        correctAnswer: "B"
+        correctAnswer: "C"
     },
     {
         question: "Which country is known as the Land of the Rising Sun?",
         answers: {
             A: " China ",
-            B: " Japan ",
+            B: " Vietnam ",
             C: " South Korea",
-            D: " Vietnam "
+            D: " Japan "
         },
-        correctAnswer: "B"
+        correctAnswer: "D"
     },
     {
         question: "In which continent is the Amazon Rainforest located?",
         answers: {
-            A: " Asia ",
-            B: " South America ",
+            A: " South America",
+            B: " Asia ",
             C: " Africa",
             D: " Australia "
         },
-        correctAnswer: "B"
+        correctAnswer: "A"
     }
 ];
 
@@ -105,33 +105,50 @@ function goBack() {
     currentQuestionIndex--;
     loadQuestion();
 }
-let play=document.getElementById("answerA");
-let play1=document.getElementById("answerB");
-let play2=document.getElementById("answerC");
-let play3=document.getElementById("answerD");
-
-function playButton()
-        {
-            let audio1=new Audio("error.mp3");
-            audio1.play();
-        }
-        function playButton1(){
-            let audio2=new Audio("correct.mp3");
-            audio2.play();
-        }
-        function playButton2(){
-            let audio3=new Audio("error.mp3");
-            audio3.play();
-        }
-        function playButton3(){
-            let audio4=new Audio("error.mp3");
-            audio4.play();
-        }
-
-        play.addEventListener("click",playButton)
-        play1.addEventListener("click",playButton1)
-        play2.addEventListener("click",playButton2)
-        play3.addEventListener("click",playButton3)
+const startButton = document.getElementById('startButton');
+if ('webkitSpeechRecognition' in window) {
+                    const recognition = new webkitSpeechRecognition();
+                    recognition.continuous=true;
+                    recognition.lang = 'en-US';
+        
+                    recognition.onstart = () => {
+                        startButton.textContent = 'Listening...';
+                    };
+        
+                    recognition.onend = () => {
+                        startButton.textContent = 'Start Listening';
+                    };
+        
+                    recognition.onresult = (event) => {
+                        const result = event.results[event.results.length-1][0].transcript.toLowerCase();
+                        console.log('You said:', result);
+                        if (/[aA]/.test(result)) {
+                            const radiobtn=document.getElementById("answerA");
+                            radiobtn.checked=true;
+                        } else if (/[bB]/.test(result)) {
+                            const radiobtn2=document.getElementById("answerB");
+                            radiobtn2.checked=true;
+                        } else if (/[cC]/.test(result)) {
+                            const radiobtn3=document.getElementById("answerC");
+                            radiobtn3.checked=true;
+                        } else if (/[dD]/.test(result)) {
+                            const radiobtn4=document.getElementById("answerD");
+                            radiobtn4.checked=true;
+                        }else if(/[next]/.test(result)){
+                            checkAnswer();
+                        } else {
+                            alert('Sorry, I didn\'t recognize that option. Please say A, B, or C.');
+                        }
+                    };
+        
+                    startButton.addEventListener('click', () => {
+                        recognition.start();
+                    });
+                } else {
+                    alert('Speech recognition is not supported in this browser.');
+                }
+        
+        
 
 nextButton.addEventListener("click", checkAnswer);
 prevButton.addEventListener("click", goBack);

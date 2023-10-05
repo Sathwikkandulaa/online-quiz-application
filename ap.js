@@ -14,20 +14,20 @@ const questions = [
         answers: {
             A: " 90 mph ",
             B: " 120 mph ",
-            C: " 60 mph ",
-            D: " 45 mph "
+            C: " 45 mph ",
+            D: " 60 mph "
         },
-        correctAnswer: "C"
+        correctAnswer: "D"
     },
     {
         question: "If the price of a book is reduced by 20%, and the new price is $16, what was the original price of the book?",
         answers: {
             A: " $18",
-            B: " $20",
-            C: " $24",
+            B: " $24",
+            C: " $20",
             D: " $32"
         },
-        correctAnswer: "C"
+        correctAnswer: "B"
     },
     {
         question: "A garden is in the shape of a square with a side length of 10 meters. If a path of uniform width 1 meter is built around the garden, what is the area of the path?",
@@ -42,12 +42,12 @@ const questions = [
     {
         question: " The sum of ages of 5 children born at the intervals of 3 years each is 50 years. What is the age of the youngest child?",
         answers: {
-            A: " 12 years ",
+            A: " 4 years ",
             B: " 6 years ",
-            C: " 4 years ",
+            C: " 12 years ",
             D: " 8 years "
         },
-        correctAnswer: "C"
+        correctAnswer: "A"
     }
 ];
 
@@ -104,33 +104,49 @@ function goBack() {
     currentQuestionIndex--;
     loadQuestion();
 }
-let play=document.getElementById("answerA");
-let play1=document.getElementById("answerB");
-let play2=document.getElementById("answerC");
-let play3=document.getElementById("answerD");
-
-function playButton()
-        {
-            let audio1=new Audio("error.mp3");
-            audio1.play();
-        }
-        function playButton1(){
-            let audio2=new Audio("error.mp3");
-            audio2.play();
-        }
-        function playButton2(){
-            let audio3=new Audio("correct.mp3");
-            audio3.play();
-        }
-        function playButton3(){
-            let audio4=new Audio("error.mp3");
-            audio4.play();
-        }
-
-        play.addEventListener("click",playButton)
-        play1.addEventListener("click",playButton1)
-        play2.addEventListener("click",playButton2)
-        play3.addEventListener("click",playButton3)
+const startButton = document.getElementById('startButton');
+if ('webkitSpeechRecognition' in window) {
+                    const recognition = new webkitSpeechRecognition();
+                    recognition.continuous=true;
+                    recognition.lang = 'en-US';
+        
+                    recognition.onstart = () => {
+                        startButton.textContent = 'Listening...';
+                    };
+        
+                    recognition.onend = () => {
+                        startButton.textContent = 'Start Listening';
+                    };
+        
+                    recognition.onresult = (event) => {
+                        const result = event.results[event.results.length-1][0].transcript.toLowerCase();
+                        console.log('You said:', result);
+                        if (/[aA]/.test(result)) {
+                            const radiobtn=document.getElementById("answerA");
+                            radiobtn.checked=true;
+                        } else if (/[bB]/.test(result)) {
+                            const radiobtn2=document.getElementById("answerB");
+                            radiobtn2.checked=true;
+                        } else if (/[cC]/.test(result)) {
+                            const radiobtn3=document.getElementById("answerC");
+                            radiobtn3.checked=true;
+                        } else if (/[dD]/.test(result)) {
+                            const radiobtn4=document.getElementById("answerD");
+                            radiobtn4.checked=true;
+                        }else if(/[next]/.test(result)){
+                            checkAnswer();
+                        } else {
+                            alert('Sorry, I didn\'t recognize that option. Please say A, B, or C.');
+                        }
+                    };
+        
+                    startButton.addEventListener('click', () => {
+                        recognition.start();
+                    });
+                } else {
+                    alert('Speech recognition is not supported in this browser.');
+                }
+        
 
 nextButton.addEventListener("click", checkAnswer);
 prevButton.addEventListener("click", goBack); 

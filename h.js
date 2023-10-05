@@ -12,39 +12,39 @@ const questions = [
     {
         question: "Which famous ancient structure in Egypt is known for its association with the pharaohs and served as a tomb for them?",
         answers: {
-            A: " Pyramids of Giza  ",
-            B: " Taj Mahal ",
+            A: " Taj Mahal ",
+            B: " Pyramids of Giza  ",
             C: " Parthenon ",
             D: " Great Wall of China "
         },
-        correctAnswer: "A"
+        correctAnswer: "B"
     },
     {
         question: "Which ancient civilization is known for its contributions to mathematics, including the concept of zero and the decimal system?",
         answers: {
-            A: " Indus Valley Civilization",
+            A: " Ancient Greece ",
             B: " Egyptian Civilization ",
             C: " Roman Civilzation ",
-            D: " Anicent Greece "
+            D: " Indus Valley Civilization"
         },
-        correctAnswer: "A"
+        correctAnswer: "D"
     },
     {
         question: "Who is often credited with discovering America in 1492 while searching for a western route to Asia?",
         answers: {
-            A: " Christopher Columbus ",
-            B: " Vasco da Gama ",
+            A: " Vasco da Gama ",
+            B: " Christopher Columbus ",
             C: " Ferdinand Magellan ",
             D: " Marco Polo"
         },
-        correctAnswer: "A"
+        correctAnswer: "B"
     },
     {
         question: "In which year did Mahatma Gandhi lead the famous Dandi March as part of the civil disobedience movement against British colonial rule?",
         answers: {
-            A: " 1930",
+            A: " 1919",
             B: " 1942 ",
-            C: " 1919 ",
+            C: " 1930 ",
             D: " 1922"
         },
         correctAnswer: "A"
@@ -104,33 +104,49 @@ function goBack() {
     currentQuestionIndex--;
     loadQuestion();
 }
-let play=document.getElementById("answerA");
-let play1=document.getElementById("answerB");
-let play2=document.getElementById("answerC");
-let play3=document.getElementById("answerD");
-
-function playButton()
-        {
-            let audio1=new Audio("correct.mp3");
-            audio1.play();
-        }
-        function playButton1(){
-            let audio2=new Audio("error.mp3");
-            audio2.play();
-        }
-        function playButton2(){
-            let audio3=new Audio("error.mp3");
-            audio3.play();
-        }
-        function playButton3(){
-            let audio4=new Audio("error.mp3");
-            audio4.play();
-        }
-
-        play.addEventListener("click",playButton)
-        play1.addEventListener("click",playButton1)
-        play2.addEventListener("click",playButton2)
-        play3.addEventListener("click",playButton3)
+const startButton = document.getElementById('startButton');
+if ('webkitSpeechRecognition' in window) {
+                    const recognition = new webkitSpeechRecognition();
+                    recognition.continuous=true;
+                    recognition.lang = 'en-US';
+        
+                    recognition.onstart = () => {
+                        startButton.textContent = 'Listening...';
+                    };
+        
+                    recognition.onend = () => {
+                        startButton.textContent = 'Start Listening';
+                    };
+        
+                    recognition.onresult = (event) => {
+                        const result = event.results[event.results.length-1][0].transcript.toLowerCase();
+                        console.log('You said:', result);
+                        if (/[aA]/.test(result)) {
+                            const radiobtn=document.getElementById("answerA");
+                            radiobtn.checked=true;
+                        } else if (/[bB]/.test(result)) {
+                            const radiobtn2=document.getElementById("answerB");
+                            radiobtn2.checked=true;
+                        } else if (/[cC]/.test(result)) {
+                            const radiobtn3=document.getElementById("answerC");
+                            radiobtn3.checked=true;
+                        } else if (/[dD]/.test(result)) {
+                            const radiobtn4=document.getElementById("answerD");
+                            radiobtn4.checked=true;
+                        }else if(/[next]/.test(result)){
+                            checkAnswer();
+                        } else {
+                            alert('Sorry, I didn\'t recognize that option. Please say A, B, or C.');
+                        }
+                    };
+        
+                    startButton.addEventListener('click', () => {
+                        recognition.start();
+                    });
+                } else {
+                    alert('Speech recognition is not supported in this browser.');
+                }
+        
 
 nextButton.addEventListener("click", checkAnswer);
 prevButton.addEventListener("click", goBack); 
